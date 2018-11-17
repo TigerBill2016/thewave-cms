@@ -3,7 +3,7 @@ import { notification } from 'antd';
 import router from 'umi/router';
 import hash from 'hash.js';
 
-const HOST = 'https://www.timortb.cn/'
+const HOST = 'https://www.timortb.cn'
 // const HOST = 'http://localhost:3002'
 
 const codeMessage = {
