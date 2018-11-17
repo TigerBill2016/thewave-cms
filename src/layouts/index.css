@@ -1,0 +1,14 @@
+
+.normal {
+  font-family: Georgia, sans-serif;
+  text-align: center;
+  background: darkslateblue;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: normal;
+  letter-spacing: -1px;
+  color: white;
+  margin: 0;
+}
