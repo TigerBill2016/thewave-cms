@@ -15,7 +15,9 @@ class BasicLayout extends PureComponent {
         </Header>
         <Layout>
           <Sider>
-            <Menu mode="inline"
+            <Menu 
+              mode="inline"
+              theme="dark"
               defaultSelectedKeys={['breakfast']}
               style={{ height: '100%', borderRight: 0 }}
             >
@@ -24,6 +26,9 @@ class BasicLayout extends PureComponent {
               </MenuItem>
               <MenuItem key="transfer">
                 <Link to="/transfer">接送机</Link>
+              </MenuItem>
+              <MenuItem key="bus">
+                <Link to="/bus">预约班车</Link>
               </MenuItem>
             </Menu>
           </Sider>

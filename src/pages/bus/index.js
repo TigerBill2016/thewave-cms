@@ -1,16 +1,15 @@
 import React, { PureComponent } from 'react'
 import { Table } from 'antd'
 import moment from 'moment'
-import { queryBreakfast } from '../../services/api'
+import { queryBus } from '../../services/api'
 
-class Breakfast extends PureComponent {
+class Bus extends PureComponent {
     state = {
         data: [],
     }
 
     componentDidMount() {
-        queryBreakfast().then(response => {
-            console.log(response, typeof response)
+        queryBus().then(response => {
             this.setState({
                 data: response
             })
@@ -19,7 +18,7 @@ class Breakfast extends PureComponent {
 
     render() {
         return (<div>
-            <h3>预约早餐</h3>
+            <h3>预约班车</h3>
             <Table
                 columns={this.columns}
                 dataSource={this.state.data}
@@ -41,12 +40,29 @@ class Breakfast extends PureComponent {
             dataIndex: 'person',
         },
         {
-            title: '早餐类型',
-            dataIndex: 'food',
+            title: '目的地',
+            dataIndex: 'destination',
+            render(text){
+                if(text === 'market'){
+                    return 'Central商场'
+                }
+                if(text === 'villas'){
+                    return '去别墅'
+                }
+                return text
+            }
         },
         {
-            title: '用餐时间',
+            title: '乘车时间',
             dataIndex: 'time',
+        },
+        {
+            title: '乘车人数',
+            dataIndex: 'member',
+        },
+        {
+            title: '总价(泰铢)',
+            dataIndex: 'price',
         },
         {
             title: '日期',
@@ -60,4 +76,4 @@ class Breakfast extends PureComponent {
     ]
 }
 
-export default Breakfast
+export default Bus
