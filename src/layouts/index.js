@@ -4,7 +4,7 @@ import Link from 'umi/link';
 import styles from './index.css';
 
 const MenuItem = Menu.Item;
-const { Header, Content, Sider } = Layout;
+const { Header, Content, Sider, Footer } = Layout;
 
 class BasicLayout extends PureComponent {
   render() {
@@ -15,7 +15,7 @@ class BasicLayout extends PureComponent {
         </Header>
         <Layout>
           <Sider>
-            <Menu 
+            <Menu
               mode="inline"
               theme="dark"
               defaultSelectedKeys={['breakfast']}
@@ -32,8 +32,13 @@ class BasicLayout extends PureComponent {
               </MenuItem>
             </Menu>
           </Sider>
-          <Content>
+          <Content className={styles.content}>
             {this.props.children}
+            {/* <Footer className={styles.footer}>
+              <p>Designed & Powerd by chenqiang</p>
+              <p>Copyright© 2018-2019 www.timortb.cn</p>
+              <a href="http://www.miibeian.gov.cn/" target="_blank">粤ICP备18138463号-1</a>
+            </Footer> */}
           </Content>
         </Layout>
       </Layout>
