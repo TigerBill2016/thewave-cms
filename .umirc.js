@@ -15,5 +15,6 @@ export default {
       hardSource: false,
     }],
   ],
+  base: '/thewave/',
   publicPath: '/thewave/',
 }
