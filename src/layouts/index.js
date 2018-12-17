@@ -1,12 +1,36 @@
 import React, { PureComponent } from 'react'
-import { Layout, Menu } from 'antd'
+import { Layout, Menu, Badge } from 'antd'
 import Link from 'umi/link';
 import styles from './index.css';
+import { queryMessage } from '../services/api'
 
 const MenuItem = Menu.Item;
 const { Header, Content, Sider, Footer } = Layout;
 
 class BasicLayout extends PureComponent {
+  state = {
+    count: 0
+  }
+
+  componentDidMount() {
+    this.fetch()
+    this.timer = window.setInterval(() => {
+      this.fetch()
+    }, 1000 * 5)
+  }
+
+  componentWillUnmount() {
+    window.clearInterval(this.timer)
+  }
+
+  fetch = () => {
+    queryMessage({ type: 'count' }).then(response => {
+      this.setState({
+        count: response.count
+      })
+    })
+  }
+
   render() {
     return (
       <Layout>
@@ -18,9 +42,14 @@ class BasicLayout extends PureComponent {
             <Menu
               mode="inline"
               theme="dark"
-              defaultSelectedKeys={['breakfast']}
+              defaultSelectedKeys={['']}
               style={{ height: '100%', borderRight: 0 }}
             >
+              <MenuItem key="message">
+                <Link to="/message">
+                  消息通知 <Badge count={this.state.count} />
+                </Link>
+              </MenuItem>
               <MenuItem key="breakfast">
                 <Link to="/breakfast">预约早餐</Link>
               </MenuItem>

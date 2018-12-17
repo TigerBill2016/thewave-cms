@@ -12,3 +12,7 @@ export async function queryTransfer(params) {
 export async function queryBus(params) {
     return request(`/cms/bus`)
 }
+
+export async function queryMessage(params) {
+    return request(`/cms/message?${stringify(params)}`)
+}
