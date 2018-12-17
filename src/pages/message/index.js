@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Table, Tag, message, Button } from 'antd'
+import { Table, Tag, message, Button, Icon } from 'antd'
 import moment from 'moment'
 import styles from './index.css'
 import { queryMessage } from '../../services/api'
@@ -40,7 +40,10 @@ class Message extends PureComponent {
         return (<div>
             <h3 className="page-head">
                 <div className="title">消息通知</div>
-                <Button type="primary" className={styles.btn} onClick={this.handleAll}>全部处理</Button>
+                <div className={styles.btns} >
+                    <Button type="primary" onClick={this.fetch} style={{marginRight: '8px'}}><Icon type="reload" />刷新</Button>
+                    <Button type="primary" onClick={this.handleAll}>全部处理</Button>
+                </div>
             </h3>
             <Table
                 columns={this.columns}
